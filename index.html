@@ -33,7 +33,7 @@
 		}).then((unityInstance) => {
 			console.log('Instance created', window.Telegram.WebApp);
 			window.unityInstance = unityInstance;
-			window.unityInstance.SendMessage("TelegramManager", "TelegramUserResponse", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
+			window.unityInstance.SendMessage("TelegramManager", "SetTelegramUser", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
 		});
     </script>
   </body>
