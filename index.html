@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | BHSlotMachine</title>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas"></canvas>
     <script src="Build/bh-slot-machine-page.loader.js"></script>
     <script>
-		// fill the whole browser client area with the game canvas:
 		var meta = document.createElement('meta');
 		meta.name = 'viewport';
 		meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -19,13 +19,10 @@
 		canvas.style.position = "fixed";
 		canvas.style.width = "100%";
 		canvas.style.height = "100%";
-		
-//		canvas.style.transform = "rotate(10deg)";
-//		canvas.style.transformOrigin  = "center";
 
 		document.body.style.textAlign = "left";
 
-		createUnityInstance(document.querySelector("#unity-canvas"), {
+		var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
 			dataUrl: "Build/bh-slot-machine-page.data.unityweb",
 			frameworkUrl: "Build/bh-slot-machine-page.framework.js.unityweb",
 			codeUrl: "Build/bh-slot-machine-page.wasm.unityweb",
@@ -33,8 +30,10 @@
 			companyName: "DefaultCompany",
 			productName: "BHSlotMachine",
 			productVersion: "0.1",
-			// matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-			// devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+		}).then((unityInstance) => {
+			console.log('Instance created', window.Telegram.WebApp);
+			window.unityInstance = unityInstance;
+			window.unityInstance.SendMessage("TelegramManager", "TelegramUserResponse", JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user));
 		});
     </script>
   </body>
