@@ -37,6 +37,8 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const referral_code = urlParams.get('referral_code');
 			
+			console.log("referral_code: " + referral_code);
+			
 			if (referral_code) {
 				window.unityInstance.SendMessage("TelegramManager", "SetReferralCode", referral_code);
 			}
