@@ -33,13 +33,8 @@
 		}).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 			
-			// set the referral code
-			const urlParams = new URLSearchParams(window.location.search);
-			const referral_code = urlParams.get('referral_code');
-			
-			console.log("0.3.3 referral_code: " + referral_code);
-			console.log("window.Telegram.WebApp.initDataUnsafe: ");
-			console.log(window.Telegram.WebApp.initDataUnsafe);
+			const referral_code = window.Telegram.WebApp.initDataUnsafe.start_param;			
+			console.log("referral_code: " + referral_code);
 			
 			if (referral_code) {
 				window.unityInstance.SendMessage("TelegramManager", "SetReferralCode", referral_code);
