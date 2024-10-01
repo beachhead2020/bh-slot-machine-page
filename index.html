@@ -29,7 +29,7 @@
 			streamingAssetsUrl: "StreamingAssets",
 			companyName: "DefaultCompany",
 			productName: "BHSlotMachine",
-			productVersion: "0.3.2",
+			productVersion: "0.3.3",
 		}).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 			
@@ -37,7 +37,7 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const referral_code = urlParams.get('referral_code');
 			
-			console.log("referral_code: " + referral_code);
+			console.log("0.3.3 referral_code: " + referral_code);
 			
 			if (referral_code) {
 				window.unityInstance.SendMessage("TelegramManager", "SetReferralCode", referral_code);
