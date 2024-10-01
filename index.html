@@ -27,15 +27,15 @@
 			frameworkUrl: "Build/bh-slot-machine-page.framework.js.unityweb",
 			codeUrl: "Build/bh-slot-machine-page.wasm.unityweb",
 			streamingAssetsUrl: "StreamingAssets",
-			companyName: "DefaultCompany",
+			companyName: "Digital Fusion Inc.",
 			productName: "BHSlotMachine",
-			productVersion: "0.3.4",
+			productVersion: "0.3.5",
 		}).then((unityInstance) => {
 			window.unityInstance = unityInstance;
 			
 			console.log("unityInstance loaded...");
 			const referral_code = window.Telegram.WebApp.initDataUnsafe.start_param;
-			console.log("0.3.4 - referral_code: " + referral_code);
+			console.log("0.3.5 - referral_code: " + referral_code);
 			
 			if (referral_code) {
 				window.unityInstance.SendMessage("TelegramManager", "SetReferralCode", referral_code);
