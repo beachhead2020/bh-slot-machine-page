@@ -38,6 +38,8 @@
 			const referral_code = urlParams.get('referral_code');
 			
 			console.log("0.3.3 referral_code: " + referral_code);
+			console.log("window.Telegram.WebApp.initDataUnsafe: ");
+			console.log(window.Telegram.WebApp.initDataUnsafe);
 			
 			if (referral_code) {
 				window.unityInstance.SendMessage("TelegramManager", "SetReferralCode", referral_code);
